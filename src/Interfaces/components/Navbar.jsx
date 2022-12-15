@@ -1,4 +1,7 @@
+import { useContext } from 'react';
+import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context';
 
 
 export const Navbar = () => {
@@ -12,6 +15,9 @@ export const Navbar = () => {
      */
     const navigate = useNavigate();
 
+    // Rescatamos el user del context
+    const { user } = useContext(AuthContext)
+    
     const onLogOut = () =>{
         navigate('/login',{
             replace: true
@@ -59,7 +65,11 @@ export const Navbar = () => {
                     <span 
                         className='nav-item nav-link text-success'
                     >
-                        Adrian
+                        {
+                            // Si no se pone ? dará error porque no puede leer una propiedad de undefined
+                            // ? -> en caso de que haya datos que se muestre
+                            user?.name
+                        }
                     </span>
 
                     <button 

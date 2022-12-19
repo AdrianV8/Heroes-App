@@ -16,9 +16,12 @@ export const Navbar = () => {
     const navigate = useNavigate();
 
     // Rescatamos el user del context
-    const { user } = useContext(AuthContext)
+    const { user, logout} = useContext(AuthContext)
     
     const onLogOut = () =>{
+
+        logout();
+
         navigate('/login',{
             replace: true
         })

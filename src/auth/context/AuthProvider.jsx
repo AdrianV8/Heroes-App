@@ -27,17 +27,10 @@ export const AuthProvider = ({ children }) => {
    * 
    * @param {*} name Recibe el nombre del usuario para el login
    */
-  const onLogin = (name='') =>{
+  const login = (name='') =>{
 
-    const user = {
-      id: 'ABC',
-      name
-    }
-
-    const action = {
-      type: types.login,
-      payload: user,
-    }
+    const user = { id: 'ABC', name };
+    const action = { type: types.login, payload: user }
 
     // LocalStorage solo puede grabar strings
     localStorage.setItem('user', JSON.stringify( user ))
@@ -45,12 +38,19 @@ export const AuthProvider = ({ children }) => {
     // Llamamos a la acción (action) en el dispatch, que será el encargado de mandarla al useReducer
     dispatch(action);
   }
+
+  const logout = () =>{
+    localStorage.removeItem('user');
+    const action = { type: types.logout}
+    dispatch(action)
+  }
     
   return (
     // Exponemos la función de login
     <AuthContext.Provider value={{
       ...authState,
-      login: onLogin
+      login: login,
+      logout: logout,
     }}>
         {children}
     </AuthContext.Provider>

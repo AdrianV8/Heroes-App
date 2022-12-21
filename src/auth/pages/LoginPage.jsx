@@ -17,7 +17,7 @@ export const LoginPage = () => {
   
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-5 animate__animated animate__fadeInLeft animate__delay-0.5s">
         <h1>Login</h1>
         <hr />
 

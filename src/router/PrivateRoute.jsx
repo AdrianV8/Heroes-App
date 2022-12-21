@@ -3,10 +3,15 @@
  */
 
 import { useContext } from "react"
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../auth/context"
 
 export const PrivateRoute = ({ children }) => {
+
+    const { pathname, search } = useLocation();
+    const lastPath = pathname + search;
+
+    localStorage.setItem('lastPath', lastPath);
 
     // Rescatamos el logged del contexto y verificamos que si está logueado o no
     const { logged } = useContext( AuthContext );

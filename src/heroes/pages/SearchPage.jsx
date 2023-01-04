@@ -41,7 +41,7 @@ export const SearchPage = () => {
           <h4>Búsquedas</h4>
           <hr />
 
-          <form onSubmit={onSearchSubmit}>
+          <form onSubmit={onSearchSubmit} aria-label="form">
             <input
               type="text"
               placeholder="Buscar un Héroe"

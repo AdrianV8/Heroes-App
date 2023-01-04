@@ -11,6 +11,7 @@ export const HeroSearchResults = ({ queryParameter }) => {
   return (
     <>
       <div
+        aria-label="search_hero"
         className="alert alert-primary text-center animate__animated animate__fadeIn"
         style={{ display: showSearch ? '' : 'none'}}
       >
@@ -18,6 +19,7 @@ export const HeroSearchResults = ({ queryParameter }) => {
       </div>
 
       <div
+        aria-label="search_error"
         className="alert alert-danger animate__animated animate__fadeIn"
         style={{ display: showError ? '' : 'none'}}
       >
